@@ -12,6 +12,7 @@ type Configuration struct {
 	GZip     bool                 `json:"gzip"`
 	Ports    PortConfiguration    `json:"ports"`
 	Timeouts TimeoutConfiguration `json:"timeouts"`
+	Host     string               `json:"host"`
 }
 
 // PortConfiguration lets you configure the ports that Aero will listen on.
@@ -38,6 +39,7 @@ func (config *Configuration) Reset() {
 	config.Timeouts.Write = 120 * time.Second
 	config.Timeouts.ReadHeader = 5 * time.Second
 	config.Timeouts.Shutdown = 250 * time.Millisecond
+	config.Host = ""
 }
 
 // LoadConfig loads the application configuration from the file system.
