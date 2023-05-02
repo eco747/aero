@@ -39,7 +39,7 @@ func (config *Configuration) Reset() {
 	config.Timeouts.Write = 120 * time.Second
 	config.Timeouts.ReadHeader = 5 * time.Second
 	config.Timeouts.Shutdown = 250 * time.Millisecond
-	config.Host = ""
+	config.Host = "localhost"
 }
 
 // LoadConfig loads the application configuration from the file system.
