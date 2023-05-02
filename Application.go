@@ -171,14 +171,14 @@ func (app *Application) Load() {
 // when the function returns.
 func (app *Application) ListenAndServe() {
 	if app.Security.Key != "" && app.Security.Certificate != "" {
-		listener := app.listen(":" + strconv.Itoa(app.Config.Ports.HTTPS))
+		listener := app.listen(app.Config.Host+":" + strconv.Itoa(app.Config.Ports.HTTPS))
 		go app.serveHTTPS(listener)
-		fmt.Println("Server running on:", color.GreenString("https://localhost:"+strconv.Itoa(app.Config.Ports.HTTPS)))
+		fmt.Println("Server running on:", color.GreenString("https://"+app.Config.Host+":"+strconv.Itoa(app.Config.Ports.HTTPS)))
 	}
 
-	listener := app.listen(":" + strconv.Itoa(app.Config.Ports.HTTP))
+	listener := app.listen(app.Config.Host+":" + strconv.Itoa(app.Config.Ports.HTTP))
 	go app.serveHTTP(listener)
-	fmt.Println("Server running on:", color.GreenString("http://localhost:"+strconv.Itoa(app.Config.Ports.HTTP)))
+	fmt.Println("Server running on:", color.GreenString("http://"+app.Config.Host+":"+strconv.Itoa(app.Config.Ports.HTTP)))
 }
 
 // Shutdown will gracefully shut down all servers.
