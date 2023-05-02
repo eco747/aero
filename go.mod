@@ -1,4 +1,4 @@
-module github.com/aerogo/aero
+module github.com/eco747/aero
 
 go 1.12
 
